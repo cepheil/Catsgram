@@ -2,7 +2,6 @@ package ru.yandex.practicum.catsgram.service;
 
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import ru.yandex.practicum.catsgram.exception.ConditionsNotMetException;
 import ru.yandex.practicum.catsgram.exception.DuplicatedDataException;
 import ru.yandex.practicum.catsgram.exception.NotFoundException;
@@ -74,8 +73,8 @@ public class UserService {
         return ++currentMaxId;
     }
 
-    public Optional<User> findUserById (long id) {
-        if(users.containsKey(id)){
+    public Optional<User> findUserById(long id) {
+        if (users.containsKey(id)) {
             return Optional.of(users.get(id));
         }
         return Optional.empty();

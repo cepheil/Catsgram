@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
 
-
     // @GetMapping, @PostMapping, @PutMapping, @DeleteMapping и @PatchMapping
     @GetMapping
     public String homePage() {
