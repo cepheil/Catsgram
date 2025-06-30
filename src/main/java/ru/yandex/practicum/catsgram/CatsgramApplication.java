@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 
-
 @SpringBootApplication
 public class CatsgramApplication {
 
@@ -21,7 +20,6 @@ public class CatsgramApplication {
 //    // получаем логер с именем класса, к которому он относится
 //    private final static Logger log = LoggerFactory.getLogger(CatsgramApplication.class);
 //
-
 
 
     public static void main(final String[] args) {
