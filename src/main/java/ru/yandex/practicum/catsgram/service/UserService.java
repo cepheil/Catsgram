@@ -73,6 +73,7 @@ public class UserService {
         return ++currentMaxId;
     }
 
+
     public Optional<User> findUserById(long id) {
         if (users.containsKey(id)) {
             return Optional.of(users.get(id));
