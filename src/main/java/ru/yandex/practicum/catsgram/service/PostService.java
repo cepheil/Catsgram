@@ -36,12 +36,9 @@ public class PostService {
 
         User author = userRepository.findById(request.getAuthorId())
                 .orElseThrow(() -> new NotFoundException("Пользователь с id=" + request.getAuthorId() + " не найден"));
-
         Post post = PostMapper.mapToPost(request);
         post = postRepository.save(post);
-
         return PostMapper.mapToPostDto(post);
-
     }
 
 
