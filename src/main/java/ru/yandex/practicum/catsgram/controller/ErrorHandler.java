@@ -1,15 +1,14 @@
 package ru.yandex.practicum.catsgram.controller;
 
-import ru.yandex.practicum.catsgram.exception.ConditionsNotMetException;
-import ru.yandex.practicum.catsgram.exception.DuplicatedDataException;
-import ru.yandex.practicum.catsgram.exception.ParameterNotValidException;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import ru.yandex.practicum.catsgram.exception.*;
 import ru.yandex.practicum.catsgram.model.*;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ru.yandex.practicum.catsgram.exception.NotFoundException;
 
 
 @RestControllerAdvice
@@ -50,6 +49,25 @@ public class ErrorHandler {
                 "error: " + e.getClass().getSimpleName(),
                 "description: " + e.getMessage());
     }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handlerDataAccessException(DataAccessException e) {
+        return buildErrorResponse(e);
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handlerEmptyResultDataAccessException(EmptyResultDataAccessException e) {
+        return buildErrorResponse(e);
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handlerInternalServerException(InternalServerException e) {
+        return buildErrorResponse(e);
+    }
+
 
     private ErrorResponse buildErrorResponse(Exception e) {
         return new ErrorResponse(
