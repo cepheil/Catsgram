@@ -20,7 +20,6 @@ public class UserRowMapper implements RowMapper<User> {
 
         Timestamp registrationDate = resultSet.getTimestamp("registration_date");
         user.setRegistrationDate(registrationDate.toInstant());
-
         return user;
     }
 }

@@ -24,17 +24,21 @@ public class UserRepository extends BaseRepository<User> {
         super(jdbc, mapper);
     }
 
+
     public List<User> findAll() {
         return findMany(FIND_ALL_QUERY);
     }
+
 
     public Optional<User> findByEmail(String email) {
         return findOne(FIND_BY_EMAIL_QUERY, email);
     }
 
+
     public Optional<User> findById(long userId) {
         return findOne(FIND_BY_ID_QUERY, userId);
     }
+
 
     public User save(User user) {
         long id = insert(
@@ -47,6 +51,7 @@ public class UserRepository extends BaseRepository<User> {
         user.setId(id);
         return user;
     }
+
 
     public User update(User user) {
         update(

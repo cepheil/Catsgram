@@ -9,13 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ImageRepository extends BaseRepository<Image>{
+public class ImageRepository extends BaseRepository<Image> {
     private static final String INSERT_QUERY = "INSERT INTO image_storage(original_name, file_path, post_id) " +
             "VALUES (?, ?, ?) returning id";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM image_storage WHERE id = ?";
     private static final String FIND_BY_POST_ID_QUERY = "SELECT * FROM image_storage where post_id = ?";
     private static final String DELETE_QUERY = "DELETE FROM image_storage WHERE id = ?";
-
 
 
     public ImageRepository(JdbcTemplate jdbc, ImageRowMapper mapper) {
@@ -34,14 +33,16 @@ public class ImageRepository extends BaseRepository<Image>{
         return image;
     }
 
+
     public Optional<Image> findById(long imageId) {
         return findOne(FIND_BY_ID_QUERY, imageId);
     }
 
 
-    public List<Image> findByPostId (long postId) {
+    public List<Image> findByPostId(long postId) {
         return findMany(FIND_BY_POST_ID_QUERY, postId);
     }
+
 
     public void delete(long imageId) {
         update(DELETE_QUERY, imageId);

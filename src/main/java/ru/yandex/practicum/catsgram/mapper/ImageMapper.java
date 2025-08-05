@@ -1,6 +1,5 @@
 package ru.yandex.practicum.catsgram.mapper;
 
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import ru.yandex.practicum.catsgram.dto.ImageDto;
@@ -12,13 +11,14 @@ import java.nio.file.Path;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ImageMapper {
 
-    public static Image mapToImage(long postId, String originalFileName , Path savedPath) {
+    public static Image mapToImage(long postId, String originalFileName, Path savedPath) {
         Image image = new Image();
         image.setPostId(postId);
         image.setOriginalFileName(originalFileName);
         image.setFilePath(savedPath.toString());
         return image;
     }
+
 
     public static ImageDto imageToDto(Image image, byte[] fileData) {
         ImageDto dto = new ImageDto();

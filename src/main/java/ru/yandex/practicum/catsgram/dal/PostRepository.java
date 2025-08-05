@@ -24,6 +24,7 @@ public class PostRepository extends BaseRepository<Post> {
         super(jdbc, mapper);
     }
 
+
     public List<Post> findAll() {
         return findMany(FIND_ALL_QUERY);
     }
@@ -33,9 +34,11 @@ public class PostRepository extends BaseRepository<Post> {
         return findOne(FIND_BY_POST_ID_QUERY, postId);
     }
 
+
     public List<Post> findByAuthorId(long authorId) {
         return findMany(FIND_BY_AUTHOR_ID_QUERY, authorId);
     }
+
 
     public Post save(Post post) {
         long postId = insert(
@@ -48,6 +51,7 @@ public class PostRepository extends BaseRepository<Post> {
         return post;
     }
 
+
     public Post update(Post post) {
         update(
                 UPDATE_QUERY,
@@ -57,6 +61,7 @@ public class PostRepository extends BaseRepository<Post> {
         );
         return post;
     }
+
 
     public void delete(long postId) {
         update(DELETE_QUERY, postId);

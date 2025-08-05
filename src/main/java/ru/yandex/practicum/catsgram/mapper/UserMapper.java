@@ -21,6 +21,7 @@ public final class UserMapper {
         return user;
     }
 
+
     public static UserDto mapToUserDto(User user) {
         UserDto dto = new UserDto();
         dto.setId(user.getId());
@@ -29,6 +30,7 @@ public final class UserMapper {
         dto.setRegistrationDate(Instant.now());
         return dto;
     }
+
 
     public static User updateUserFields(User user, UpdateUserRequest request) {
         if (request.hasEmail()) {
