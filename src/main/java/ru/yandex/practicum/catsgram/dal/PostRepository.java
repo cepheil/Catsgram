@@ -63,8 +63,8 @@ public class PostRepository extends BaseRepository<Post> {
     }
 
 
-    public void delete(long postId) {
-        update(DELETE_QUERY, postId);
+    public boolean delete(long postId) {
+        return delete(DELETE_QUERY, postId);
     }
 
 
